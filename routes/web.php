@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/logout', 'UserController@logout')->name('logout');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/post/{slug}', 'PostController@show')->name('post.detail');
+Route::get('/category/{slug}', 'CategoryController@show')->name('category.detail');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', 'UserController@loginView')->name('login.view');

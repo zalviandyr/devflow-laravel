@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Home')
+@section('title', $categoryName)
 
 @section('content')
   <div class="container p-3 mt-5">
