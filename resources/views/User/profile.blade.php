@@ -1,12 +1,13 @@
 @extends('User.layout')
 @section('title', 'Profile')
+
 @section('content')
   <div class="container p-3">
     <div class="border-b-2 border-red-500">
       <div class="flex">
-        <a href="/profile" class="px-10 py-4 text-white bg-red-500">Profile</a>
+        <a href="{{ route('profile') }}" class="px-10 py-4 text-white bg-red-500">Profile</a>
         <a href="/point" class="px-10 py-4 text-red-500 hover:bg-red-200">Point</a>
-        <a href="/change-password" class="px-10 py-4 text-red-500 hover:bg-red-200">Password</a>
+        <a href="{{ route('profile.changePassword') }}" class="px-10 py-4 text-red-500 hover:bg-red-200">Password</a>
       </div>
     </div>
     <h3 class="mt-8 text-4xl font-semibold text-red-500">Profil Saya</h3>

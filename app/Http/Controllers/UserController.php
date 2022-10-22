@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\LoginRequest;
 use App\Http\Requests\User\RegisterRequest;
+use App\Http\Requests\User\UpdatePasswordRequest;
 use App\Http\Requests\User\UpdateProfileRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -25,9 +26,12 @@ class UserController extends Controller
     {
         $auth = Auth::user();
 
-        return view('User.profile', [
-            'auth' => $auth,
-        ]);
+        return view('User.profile', compact('auth'));
+    }
+
+    public function changePasswordView()
+    {
+        return view('User.change-password');
     }
 
     public function login(LoginRequest $request)
@@ -80,5 +84,21 @@ class UserController extends Controller
         }
 
         return redirect()->back()->withSuccess(__('profile.success'));
+    }
+
+    public function updatePassword(UpdatePasswordRequest $request)
+    {
+        $user = Auth::user();
+
+        if (!Hash::check($request->passwordLama, $user->password)) {
+            return redirect()->back()->withErrors(__('profile.changePassword.failed'))->withInput();
+        }
+
+        $user = User::find($user->id);
+        $user->update([
+            'password' => Hash::make($request->passwordBaru),
+        ]);
+
+        return redirect()->back()->withSuccess(__('profile.changePassword.success'));
     }
 }

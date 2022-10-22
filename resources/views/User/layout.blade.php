@@ -120,7 +120,7 @@
   </div>
   @livewireScripts
 
-
+  @include('plugin.sweetalert.alert')
 </body>
 
 </html>
