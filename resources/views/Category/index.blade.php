@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Home')
+@section('title', $categoryName)
 
 @section('content')
   <div class="container p-3 mt-5">
@@ -14,7 +14,7 @@
             </div>
           </div>
           <div class="flex flex-col">
-            <a href="{{ route('topic.detail', $post->topic->slug) }}">{{ $post->topic->name }}</a>
+            <a href="">{{ $post->topic->name }}</a>
           </div>
         </div>
         <div class="block">
@@ -23,6 +23,9 @@
           {!! $post->body !!}
 
           <div class="grid grid-cols-2 group">
+            {{-- @for ($j = 1; $j <= 3; $j++)
+              <img src="{{ asset('images/community.png') }}" class="w-full odd:last-of-type:col-span-2 hover:opacity-60" />
+            @endfor --}}
           </div>
         </div>
         <hr class="border border-slate-200" />

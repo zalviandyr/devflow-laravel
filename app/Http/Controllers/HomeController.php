@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Str;
 
@@ -11,7 +10,6 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::latest()->get();
-        $categories = Category::latest()->limit(10)->get();
 
         foreach ($posts as $post) {
             $body = '<p>'.$post->body.'</p>';
@@ -20,6 +18,6 @@ class HomeController extends Controller
             $post->body = Str::limit($body, 128, $limit);
         }
 
-        return view('index', compact('posts', 'categories'));
+        return view('index', compact('posts'));
     }
 }

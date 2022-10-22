@@ -137,23 +137,21 @@
       @yield('content')
     </div>
 
-    @if (route('home') === URL::current())
-      <div class="w-1/6 px-4">
-        <div class="sticky w-full top-20">
-          <div class="text-xl border-b border-red-500">Kategori</div>
-          @foreach ($categories as $categori)
-            <div class="text-start">
-              <a href="/category/{{ $categori->slug }}" class="flex items-center pl-4 hover:bg-red-50">
-                <img src="{{ $categori->icon }}" class="object-contain w-10 h-10">
-                <div class="w-full py-4 ml-4 ">
-                  {{ $categori->name }}
-                </div>
-              </a>
-            </div>
-          @endforeach
-        </div>
+    <div class="w-1/6 px-4">
+      <div class="sticky w-full top-20">
+        <div class="text-xl border-b border-red-500">Kategori</div>
+        @foreach ($categories as $categori)
+          <div class="text-start">
+            <a href="{{ route('category.detail', ['slug' => $categori->slug]) }}" class="flex items-center pl-4 hover:bg-red-50">
+              <img src="{{ $categori->icon }}" class="object-contain w-10 h-10">
+              <div class="w-full py-4 ml-4 ">
+                {{ $categori->name }}
+              </div>
+            </a>
+          </div>
+        @endforeach
       </div>
-    @endif
+    </div>
 
   </div>
   @livewireScripts
