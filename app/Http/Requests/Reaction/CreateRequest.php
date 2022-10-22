@@ -4,6 +4,7 @@ namespace App\Http\Requests\Reaction;
 
 use App\Enums\ReactionType;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
 
 class CreateRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class CreateRequest extends FormRequest
             'user_id' => 'required|exists:users,id',
             'post_id' => 'required|exists:post,id',
             'point' => 'required|int',
-            'type' => [new Enum(ReactionType::class)]
+            'type' => ['required', new Enum(ReactionType::class)]
         ];
     }
 }
