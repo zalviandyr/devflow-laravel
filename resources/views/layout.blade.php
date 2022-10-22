@@ -33,16 +33,20 @@
             @auth
               <div class="relative flex items-center h-16 space-x-2 group">
                 <span class="font-medium text-slate-500">{{ Auth::user()->name }}</span>
-                <img src="{{ asset('images/avatar.svg') }}" class="w-10 h-10">
+                <img src="{{ Auth::user()->photo }}" class="w-10 h-10 rounded-full">
 
                 <div
                   class="absolute right-0 hidden w-48 overflow-hidden bg-white border border-gray-100 rounded-md shadow top-full group-hover:flex group-hover:flex-col">
+                  <a href="{{ route('profile') }}" class="px-4 py-4 text-md text-slate-500 dark:text-gray-500 hover:bg-slate-200 hover:text-blue-500">
+                    Profile
+                  </a>
+                  <a href="#" class="px-4 py-4 text-md text-slate-500 dark:text-gray-500 hover:bg-slate-200 hover:text-blue-500">
+                    Point
+                  </a>
                   <a href="{{ route('logout') }}"
-                    class="px-4 py-4 text-md text-slate-500 dark:text-gray-500 hover:bg-slate-200 hover:text-blue-500">Profile</a>
-                  <a href="{{ route('logout') }}"
-                    class="px-4 py-4 text-md text-slate-500 dark:text-gray-500 hover:bg-slate-200 hover:text-blue-500">Point</a>
-                  <a href="{{ route('logout') }}"
-                    class="px-4 py-4 border-t text-md text-slate-500 dark:text-gray-500 hover:bg-red-200 hover:text-red-500 border-t-gray-300">Logout</a>
+                    class="px-4 py-4 border-t text-md text-slate-500 dark:text-gray-500 hover:bg-red-200 hover:text-red-500 border-t-gray-300">
+                    Logout
+                  </a>
                 </div>
               </div>
             @else
@@ -60,7 +64,7 @@
     <div class="relative w-1/6 px-4 border-r border-r-gray-200">
       <div class="sticky w-full top-20">
         @auth
-          <img src="{{ asset('images/avatar.svg') }}" class="w-32 h-32 mx-auto rounded-full">
+          <img src="{{ Auth::user()->photo }}" class="w-32 h-32 mx-auto rounded-full">
           <div class="mt-4 text-center">{{ Auth::user()->name }}</div>
           <div class="my-10 text-center hover:cursor-pointer" @click="createPost = !createPost">
             <div class="w-full py-4 rounded-full" :class="createPost ? 'border border-red-500 text-red-500' : 'bg-red-500 text-white'">
@@ -71,21 +75,21 @@
         <div class="block">
           <div class="text-center">
             <a href="{{ route('home') }}">
-              <div class="w-full py-4 bg-red-50">
+              <div class="w-full py-4 @if (request()->routeIs('home')) bg-red-50 @else hover:bg-red-50 @endif">
                 Home
               </div>
             </a>
           </div>
           <div class="text-center">
             <a href="{{ route('profile') }}">
-              <div class="w-full py-4 hover:bg-red-50">
+              <div class="w-full py-4 @if (request()->routeIs('profile*')) bg-red-50 @else hover:bg-red-50 @endif">
                 Profile
               </div>
             </a>
           </div>
           <div class="text-center">
             <a href="/topic">
-              <div class="w-full py-4 hover:bg-red-50">
+              <div class="w-full py-4 @if (request()->routeIs('category*')) bg-red-50 @else hover:bg-red-50 @endif">
                 Kategori
               </div>
             </a>
@@ -133,20 +137,21 @@
       @yield('content')
     </div>
 
-    @if (route('home') === URL::current())
-      <div class="w-1/6 px-4">
-        <div class="sticky w-full top-20">
-          <div class="text-xl">Kategori</div>
+    <div class="w-1/6 px-4">
+      <div class="sticky w-full top-20">
+        <div class="text-xl border-b border-red-500">Kategori</div>
+        @foreach ($categories as $categori)
           <div class="text-start">
-            <a href="/#">
-              <div class="w-full py-4 hover:bg-red-50">
-                Hello
+            <a href="{{ route('category.detail', ['slug' => $categori->slug]) }}" class="flex items-center pl-4 hover:bg-red-50">
+              <img src="{{ $categori->icon }}" class="object-contain w-10 h-10">
+              <div class="w-full py-4 ml-4 ">
+                {{ $categori->name }}
               </div>
             </a>
           </div>
-        </div>
+        @endforeach
       </div>
-    @endif
+    </div>
 
   </div>
   @livewireScripts
@@ -163,7 +168,8 @@
       events: {
         initialized: callback,
         contentChanged: callback
-      }
+      },
+      quickInsertTags: [],
     });
 
     // document.getElementById('#show').innerHTML =

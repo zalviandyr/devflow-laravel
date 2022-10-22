@@ -28,4 +28,15 @@ class PostController extends Controller
 
         return redirect()->route('home')->withSuccess(__('post.success'));
     }
+
+    public function show($slug){
+        $post = Post::where('slug', $slug)->first();
+        if($post){
+            return view('Post.index', compact('post'));
+        }
+        else {
+            \abort(404);
+        }
+
+    }
 }
