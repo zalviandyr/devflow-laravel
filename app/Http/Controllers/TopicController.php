@@ -11,7 +11,6 @@ class TopicController extends Controller
     public function all()
     {
         $topic = Topic::all();
-
         return response()->json($topic);
     }
 

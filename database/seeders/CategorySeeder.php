@@ -17,27 +17,27 @@ class CategorySeeder extends Seeder
     {
         Category::create([
             'name' => 'ExpressJS',
-            'slug' => Str::slug('expressjs'),
+            'slug' => '/' . Str::slug('expressjs'),
             'icon' => '#'
         ]);
         Category::create([
             'name' => 'ReactJS',
-            'slug' => Str::slug('reactjs'),
+            'slug' => '/' . Str::slug('reactjs'),
             'icon' => '#'
         ]);
         Category::create([
             'name' => 'VueJS',
-            'slug' => Str::slug('vuejs'),
+            'slug' => '/' . Str::slug('vuejs'),
             'icon' => '#'
         ]);
         Category::create([
             'name' => 'Laravel',
-            'slug' => Str::slug('laravel'),
+            'slug' => '/' . Str::slug('laravel'),
             'icon' => '#'
         ]);
         Category::create([
             'name' => 'Flutter',
-            'slug' => Str::slug('flutter'),
+            'slug' => '/' . Str::slug('flutter'),
             'icon' => '#'
         ]);
     }
