@@ -64,5 +64,5 @@
     </div>
   </div>
 
-  @include('vendor.sweetalert.alert')
+  @include('plugin.sweetalert.alert')
 </body>
