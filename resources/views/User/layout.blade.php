@@ -9,9 +9,12 @@
     | DevFlow</title>
   <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="//unpkg.com/alpinejs" defer></script>
-  <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-  <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_style.min.css" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet"
+    type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_style.min.css" rel="stylesheet"
+    type="text/css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js">
+  </script>
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   @livewireStyles
   <style>
@@ -37,10 +40,12 @@
 
                 <div
                   class="absolute right-0 hidden w-48 overflow-hidden bg-white border border-gray-100 rounded-md shadow top-full group-hover:flex group-hover:flex-col">
-                  <a href="{{ route('profile') }}" class="px-4 py-4 text-md text-slate-500 dark:text-gray-500 hover:bg-slate-200 hover:text-blue-500">
+                  <a href="{{ route('profile') }}"
+                    class="px-4 py-4 text-md text-slate-500 dark:text-gray-500 hover:bg-slate-200 hover:text-blue-500">
                     Profile
                   </a>
-                  <a href="#" class="px-4 py-4 text-md text-slate-500 dark:text-gray-500 hover:bg-slate-200 hover:text-blue-500">
+                  <a href="#"
+                    class="px-4 py-4 text-md text-slate-500 dark:text-gray-500 hover:bg-slate-200 hover:text-blue-500">
                     Point
                   </a>
                   <a href="{{ route('logout') }}"
@@ -50,9 +55,11 @@
                 </div>
               </div>
             @else
-              <a href="{{ route('login') }}" class="px-4 py-2 text-red-500 border border-white rounded hover:border-red-500 ">Login</a>
+              <a href="{{ route('login') }}"
+                class="px-4 py-2 text-red-500 border border-white rounded hover:border-red-500 ">Login</a>
               @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="px-4 py-2 text-white bg-red-500 border border-red-500 rounded hover:bg-red-600">Register</a>
+                <a href="{{ route('register') }}"
+                  class="px-4 py-2 text-white bg-red-500 border border-red-500 rounded hover:bg-red-600">Register</a>
               @endif
             @endauth
           </div>
@@ -67,7 +74,8 @@
           <img src="{{ Auth::user()->photo }}" class="w-32 h-32 mx-auto rounded-full">
           <div class="mt-4 text-center">{{ Auth::user()->name }}</div>
           <div class="my-10 text-center hover:cursor-pointer" @click="createPost = !createPost">
-            <div class="w-full py-4 rounded-full" :class="createPost ? 'border border-red-500 text-red-500' : 'bg-red-500 text-white'">
+            <div class="w-full py-4 rounded-full"
+              :class="createPost ? 'border border-red-500 text-red-500' : 'bg-red-500 text-white'">
               Create Post
             </div>
           </div>
