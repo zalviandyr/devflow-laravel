@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::latest()->get();
 
         foreach ($posts as $post) {
             $body = '<p>'.$post->body.'</p>';
