@@ -17,23 +17,23 @@ class TopicSeeder extends Seeder
     {
         Topic::create([
             'name' => 'Automation',
-            'slug' => Str::slug('automation')
+            'slug' => '/' . Str::slug('automation')
         ]);
         Topic::create([
             'name' => 'UI/UX',
-            'slug' => Str::slug('uiux')
+            'slug' => '/' . Str::slug('uiux')
         ]);
         Topic::create([
             'name' => 'Workflow',
-            'slug' => Str::slug('workflow')
+            'slug' => '/' . Str::slug('workflow')
         ]);
         Topic::create([
             'name' => 'Industrial',
-            'slug' => Str::slug('indusrtial')
+            'slug' => '/' . Str::slug('indusrtial')
         ]);
         Topic::create([
             'name' => 'Flutter',
-            'slug' => Str::slug('flutter')
+            'slug' => '/' . Str::slug('flutter')
         ]);
     }
 }
