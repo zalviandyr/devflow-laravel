@@ -35,7 +35,7 @@
           <div class="px-6 py-4 space-x-4 sm:block">
             @auth
               <div class="relative flex items-center h-16 space-x-2 group">
-                <span class="font-medium text-slate-500">Nama User</span>
+                <span class="font-medium text-slate-500">{{ Auth::user()->name }}</span>
                 <img src="{{ asset('images/avatar.svg') }}" class="w-10 h-10">
 
                 <div
@@ -61,12 +61,12 @@
       </div>
     </div>
   </div>
-  <div class="container flex mx-auto mt-16" x-data="{ createPost: false }">
-    <div class="relative w-1/6 px-4 border-r border-r-gray-200">
+  <div class="container flex flex-row mx-auto mt-16" x-data="{ createPost: false }">
+    <div class="relative px-4 border-r w-52 border-r-gray-200">
       <div class="sticky w-full top-20">
         @auth
           <img src="{{ asset('images/avatar.svg') }}" class="w-32 h-32 mx-auto rounded-full">
-          <div class="mt-4 text-center">Alvin Faiz</div>
+          <div class="mt-4 text-center">{{ Auth::user()->name }}</div>
           <div class="my-10 text-center hover:cursor-pointer" @click="createPost = !createPost">
             <div class="w-full py-4 rounded-full"
               :class="createPost ? 'border border-red-500 text-red-500' : 'bg-red-500 text-white'">
@@ -76,16 +76,16 @@
         @endauth
         <div class="block">
           <div class="text-center">
-            <a href="/topic">
+            <a href="{{ route('home') }}">
               <div class="w-full py-4 bg-red-50">
                 Home
               </div>
             </a>
           </div>
           <div class="text-center">
-            <a href="/topic">
+            <a href="{{ route('profile') }}">
               <div class="w-full py-4 hover:bg-red-50">
-                Profil
+                Profile
               </div>
             </a>
           </div>
@@ -120,7 +120,8 @@
         </div>
       </div>
     </div>
-    <div class="w-4/6 px-20">
+
+    <div class="w-full px-20">
       <div class="my-10" x-show="createPost">
         <form method="POST" action="{{ route('post') }}">
           @csrf
@@ -138,13 +139,19 @@
       </div>
       @yield('content')
     </div>
-    <div class="w-1/6 px-4">
-      <div class="sticky w-full top-20">
-        Faiz
+
+    @if (route('home') === URL::current())
+      <div class="px-4 w-52">
+        <div class="sticky w-full top-20">
+          Faiz
+        </div>
       </div>
-    </div>
+    @endif
+
   </div>
   @livewireScripts
+
+  @include('vendor.sweetalert.alert')
   <script>
     var callback = function() {
       var editor = this
@@ -159,7 +166,7 @@
       }
     });
 
-    // document.getElementById('#show').innerHTML = 
+    // document.getElementById('#show').innerHTML =
   </script>
 </body>
 

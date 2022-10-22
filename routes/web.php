@@ -23,6 +23,9 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/register', 'UserController@register')->name('register');
 });
 
+Route::get('/profile', 'UserController@profileView')->name('profile');
+Route::post('/profile', 'UserController@updateProfile')->name('profile.update');
+
 Route::get('/', function () {
     return view('index');
 })->name('home');
