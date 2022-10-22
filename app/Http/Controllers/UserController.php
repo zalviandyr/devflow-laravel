@@ -54,7 +54,7 @@ class UserController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('login')->withSuccess(__('auth.logout.success'));
+        return redirect()->route('home')->withSuccess(__('auth.logout.success'));
     }
 
     public function register(RegisterRequest $request)
