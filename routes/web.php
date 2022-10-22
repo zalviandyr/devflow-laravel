@@ -15,3 +15,6 @@
 Route::get('/login', function(){
   return view('Auth.login');
 });
+Route::get('/register', function(){
+  return view('Auth.register');
+});
