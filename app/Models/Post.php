@@ -41,6 +41,11 @@ class Post extends Model implements HasMedia
         return $this->belongsTo(User::class);
     }
 
+    public function topic()
+    {
+        return $this->belongsTo(Topic::class);
+    }
+
     public function getImagesAttribute()
     {
         $images = [];
