@@ -21,8 +21,6 @@ class User extends Authenticatable implements HasMedia
         'email',
         'username',
         'password',
-        'phone_number',
-        'address',
     ];
 
     protected $appends = [

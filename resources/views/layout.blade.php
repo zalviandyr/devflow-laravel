@@ -75,21 +75,21 @@
         <div class="block">
           <div class="text-center">
             <a href="{{ route('home') }}">
-              <div class="w-full py-4 bg-red-50">
+              <div class="w-full py-4 @if (request()->routeIs('home')) bg-red-50 @else hover:bg-red-50 @endif">
                 Home
               </div>
             </a>
           </div>
           <div class="text-center">
             <a href="{{ route('profile') }}">
-              <div class="w-full py-4 hover:bg-red-50">
+              <div class="w-full py-4 @if (request()->routeIs('profile*')) bg-red-50 @else hover:bg-red-50 @endif">
                 Profile
               </div>
             </a>
           </div>
           <div class="text-center">
             <a href="/topic">
-              <div class="w-full py-4 hover:bg-red-50">
+              <div class="w-full py-4 @if (request()->routeIs('category*')) bg-red-50 @else hover:bg-red-50 @endif">
                 Kategori
               </div>
             </a>
