@@ -10,3 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
  */
+
+//Login & Register
+Route::get('/login', function(){
+  return view('Auth.login');
+});
