@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 // Auth
 Route::get('/logout', 'UserController@logout')->name('logout');
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/post/{slug}', 'PostController@show')->name('post.detail');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', 'UserController@loginView')->name('login.view');
@@ -31,6 +32,5 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/', 'UserController@updateProfile')->name('profile.update');
     });
 
-    Route::get('/post/{slug}', 'PostController@create')->name('post.detail');
     Route::post('/post', 'PostController@create')->name('post');
 });

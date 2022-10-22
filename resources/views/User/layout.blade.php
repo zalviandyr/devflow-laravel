@@ -64,16 +64,10 @@
   <div class="container flex flex-row mx-auto mt-16" x-data="{ createPost: false }">
     <div class="relative w-1/6 px-4 border-r border-r-gray-200">
       <div class="sticky w-full top-20">
-        @auth
-          <img src="{{ asset('images/avatar.svg') }}" class="w-32 h-32 mx-auto rounded-full">
-          <div class="mt-4 text-center">{{ Auth::user()->name }}</div>
-          <div class="my-10 text-center hover:cursor-pointer" @click="createPost = !createPost">
-            <div class="w-full py-4 rounded-full"
-              :class="createPost ? 'border border-red-500 text-red-500' : 'bg-red-500 text-white'">
-              Create Post
-            </div>
-          </div>
-        @endauth
+
+        <img src="{{ asset('images/avatar.svg') }}" class="w-32 h-32 mx-auto rounded-full">
+        <div class="mt-4 text-center">{{ Auth::user()->name }}</div>
+
         <div class="block">
           <div class="text-center">
             <a href="{{ route('home') }}">
