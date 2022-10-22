@@ -73,12 +73,6 @@
         @auth
           <img src="{{ Auth::user()->photo }}" class="w-32 h-32 mx-auto rounded-full">
           <div class="mt-4 text-center">{{ Auth::user()->name }}</div>
-          <div class="my-10 text-center hover:cursor-pointer" @click="createPost = !createPost">
-            <div class="w-full py-4 rounded-full"
-              :class="createPost ? 'border border-red-500 text-red-500' : 'bg-red-500 text-white'">
-              Create Post
-            </div>
-          </div>
         @endauth
         <div class="block">
           <div class="text-center">
