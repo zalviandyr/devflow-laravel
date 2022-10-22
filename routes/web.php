@@ -30,4 +30,4 @@ Route::get('/', function () {
 Route::get('/post/create', function () {
     return view('Post.create');
 })->name('createPost');
-Route::post('/post', 'PostController@create')->name('post');
+Route::post('/post', '\App\Http\Controllers\PostController@create')->name('post');

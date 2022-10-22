@@ -122,18 +122,19 @@
     </div>
     <div class="w-4/6 px-20">
       <div class="my-10" x-show="createPost">
-        <div class="mb-6 text-slate-500">
-          <input type="text" name="title" id="title" class="w-full py-2.5 px-2 rounded-md"
-            placeholder="Judul Post" />
-          <input type="text" name="topic_id" id="title" class="w-full py-2.5 px-2 rounded-md"
-            placeholder="Judul Post" />
-        </div>
-        <div id="wysiwyg"></div>
-        <form class="hidden" action="POST" method="{{ route('post') }}">
+        <form method="POST" action="{{ route('post') }}">
+          @csrf
+          <div class="mb-6 text-slate-500">
+            <input type="text" name="title" id="title"
+              class="w-full py-2.5 px-2 rounded-md placeholder:text-gray-300" placeholder="Judul Post" />
+            @livewire('search-topic')
+          </div>
+          <div id="wysiwyg"></div>
           <textarea class="hidden px-4 fr-view" id="show" name="body">
-        </textarea>
+          </textarea>
+          <button type="submit"
+            class="w-full text-white bg-red-500 rounded-full hover:bg-red-600 py-2.5 mt-4">Post</button>
         </form>
-
       </div>
       @yield('content')
     </div>

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('is_open');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
-
+            $table->string('slug');
             $table->foreign('user_id')->on('users')->references('id');
             $table->foreign('topic_id')->on('topic')->references('id');
         });
