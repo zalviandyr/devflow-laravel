@@ -6,9 +6,9 @@
   <script>
     const Toast = Swal.mixin({
       toast: true,
-      position: 'top-end',
+      position: 'bottom-end',
       showConfirmButton: false,
-      timer: 3000,
+      timer: 5000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -18,7 +18,8 @@
 
     Toast.fire({
       icon: 'error',
-      title: "{!! Session::get('errors')->first() !!}"
+      title: "{!! Session::get('errors')->first() !!}",
+      background: '#ECEDEF',
     })
   </script>
 @endif
@@ -31,9 +32,9 @@
   <script>
     const Toast = Swal.mixin({
       toast: true,
-      position: 'top-end',
+      position: 'bottom-end',
       showConfirmButton: false,
-      timer: 3000,
+      timer: 5000,
       timerProgressBar: true,
       didOpen: (toast) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -43,7 +44,8 @@
 
     Toast.fire({
       icon: 'success',
-      title: "{!! Session::get('success') !!}"
+      title: "{!! Session::get('success') !!}",
+      background: '#ECEDEF',
     })
   </script>
 @endif
