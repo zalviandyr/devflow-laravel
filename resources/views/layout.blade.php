@@ -167,7 +167,8 @@
       events: {
         initialized: callback,
         contentChanged: callback
-      }
+      },
+      quickInsertTags: [],
     });
 
     // document.getElementById('#show').innerHTML =
