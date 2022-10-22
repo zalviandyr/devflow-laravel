@@ -12,9 +12,8 @@ class CreateRequest extends FormRequest
             'title' => 'required|string',
             'body' => 'required|string',
             'topic_id' => 'required|exists:topic,id',
-            'user_id' => 'required|exists:users,id',
-            'images' => 'required|array|max:4',
-            'images.*' => 'image',
+            // 'images' => 'required|array|max:4',
+            // 'images.*' => 'image',
         ];
     }
 }

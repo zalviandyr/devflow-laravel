@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 
 // Auth
 Route::get('/logout', 'UserController@logout')->name('logout');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', 'UserController@loginView')->name('login.view');
@@ -23,6 +24,12 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/register', 'UserController@register')->name('register');
 });
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('profile')->group(function () {
+        Route::get('/', 'UserController@profileView')->name('profile');;
+        Route::post('/', 'UserController@updateProfile')->name('profile.update');
+    });
+
+    Route::get('/post/{slug}', 'PostController@create')->name('post.detail');
+    Route::post('/post', 'PostController@create')->name('post');
+});
