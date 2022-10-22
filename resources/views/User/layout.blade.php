@@ -75,13 +75,17 @@
               </div>
             </a>
           </div>
-          <div class="text-center">
-            <a href="{{ route('profile') }}">
-              <div class="w-full py-4 @if (request()->routeIs('profile*')) bg-red-50 @else hover:bg-red-50 @endif">
-                Profile
-              </div>
-            </a>
-          </div>
+
+          @auth()
+            <div class="text-center">
+              <a href="{{ route('profile') }}">
+                <div class="w-full py-4 @if (request()->routeIs('profile*')) bg-red-50 @else hover:bg-red-50 @endif">
+                  Profile
+                </div>
+              </a>
+            </div>
+          @endauth
+
           <div class="text-center">
             <a href="/topic">
               <div class="w-full py-4 @if (request()->routeIs('category*')) bg-red-50 @else hover:bg-red-50 @endif">
