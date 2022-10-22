@@ -26,3 +26,8 @@ Route::middleware(['guest'])->group(function () {
 Route::get('/', function () {
     return view('index');
 })->name('home');
+
+Route::get('/test', function () {
+    event(new App\Events\PostNotification());
+    return 'event sent';
+});
