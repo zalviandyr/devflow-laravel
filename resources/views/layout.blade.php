@@ -9,12 +9,9 @@
     | DevFlow</title>
   <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="//unpkg.com/alpinejs" defer></script>
-  <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet"
-    type="text/css" />
-  <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_style.min.css" rel="stylesheet"
-    type="text/css" />
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js">
-  </script>
+  <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   @livewireStyles
   <style>
@@ -49,11 +46,9 @@
                 </div>
               </div>
             @else
-              <a href="{{ route('login') }}"
-                class="px-4 py-2 text-red-500 border border-white rounded hover:border-red-500 ">Login</a>
+              <a href="{{ route('login') }}" class="px-4 py-2 text-red-500 border border-white rounded hover:border-red-500 ">Login</a>
               @if (Route::has('register'))
-                <a href="{{ route('register') }}"
-                  class="px-4 py-2 text-white bg-red-500 border border-red-500 rounded hover:bg-red-600">Register</a>
+                <a href="{{ route('register') }}" class="px-4 py-2 text-white bg-red-500 border border-red-500 rounded hover:bg-red-600">Register</a>
               @endif
             @endauth
           </div>
@@ -68,8 +63,7 @@
           <img src="{{ asset('images/avatar.svg') }}" class="w-32 h-32 mx-auto rounded-full">
           <div class="mt-4 text-center">{{ Auth::user()->name }}</div>
           <div class="my-10 text-center hover:cursor-pointer" @click="createPost = !createPost">
-            <div class="w-full py-4 rounded-full"
-              :class="createPost ? 'border border-red-500 text-red-500' : 'bg-red-500 text-white'">
+            <div class="w-full py-4 rounded-full" :class="createPost ? 'border border-red-500 text-red-500' : 'bg-red-500 text-white'">
               Create Post
             </div>
           </div>
@@ -126,15 +120,14 @@
         <form method="POST" action="{{ route('post') }}">
           @csrf
           <div class="mb-6 text-slate-500">
-            <input type="text" name="title" id="title"
-              class="w-full py-2.5 px-2 rounded-md placeholder:text-gray-300" placeholder="Judul Post" />
+            <input type="text" name="title" id="title" class="w-full py-2.5 px-2 rounded-md placeholder:text-gray-300"
+              placeholder="Judul Post" />
             @livewire('search-topic')
           </div>
           <div id="wysiwyg"></div>
           <textarea class="hidden px-4 fr-view" id="show" name="body">
           </textarea>
-          <button type="submit"
-            class="w-full text-white bg-red-500 rounded-full hover:bg-red-600 py-2.5 mt-4">Post</button>
+          <button type="submit" class="w-full text-white bg-red-500 rounded-full hover:bg-red-600 py-2.5 mt-4">Post</button>
         </form>
       </div>
       @yield('content')
@@ -144,13 +137,13 @@
       <div class="px-4 w-52">
         <div class="sticky w-full top-20">
           <div class="text-xl">Kategori</div>
-            <div class="text-start">
-                <a href="/#">
-                    <div class="w-full py-4 hover:bg-red-50">
-                        Hello
-                    </div>
-                </a>
-            </div>
+          <div class="text-start">
+            <a href="/#">
+              <div class="w-full py-4 hover:bg-red-50">
+                Hello
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     @endif
@@ -158,7 +151,7 @@
   </div>
   @livewireScripts
 
-  @include('vendor.sweetalert.alert')
+  @include('plugin.sweetalert.alert')
   <script>
     var callback = function() {
       var editor = this
