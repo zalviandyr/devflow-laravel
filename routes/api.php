@@ -41,3 +41,7 @@ Route::post('/reaction', 'ReactionController@create');
 // project
 Route::get('/project', 'ProjectController@all');
 Route::post('/project', 'ProjectController@create');
+
+// category
+Route::get('/category', 'CategoryController@all');
+Route::post('/category', 'CategoryController@create');
