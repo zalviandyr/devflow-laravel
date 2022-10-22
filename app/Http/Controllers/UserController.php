@@ -32,7 +32,7 @@ class UserController extends Controller
             if ($valid) {
                 Auth::login($user);
 
-                return response()->json('Valid');
+                return redirect()->route('home')->withSuccess(__('auth.login.success'));
             }
         }
 

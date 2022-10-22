@@ -27,13 +27,12 @@
         @if (Route::has('login'))
           <div class="px-6 py-4 space-x-4 sm:block">
             @auth
-              <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline dark:text-gray-500 ">Home</a>
+              <a href="{{ route('home') }}" class="text-sm text-gray-700 dark:text-gray-500 hover:underline">Home</a>
+              <a href="{{ route('logout') }}" class="text-sm text-red-500 dark:text-gray-500 hover:underline">Logout</a>
             @else
-              <a href="{{ route('login') }}"
-                class="px-4 py-2 text-red-500 border border-white rounded hover:border-red-500 ">Login</a>
+              <a href="{{ route('login') }}" class="px-4 py-2 text-red-500 border border-white rounded hover:border-red-500 ">Login</a>
               @if (Route::has('register'))
-                <a href="{{ route('register') }}"
-                  class="px-4 py-2 text-white bg-red-500 border border-red-500 rounded hover:bg-red-600">Register</a>
+                <a href="{{ route('register') }}" class="px-4 py-2 text-white bg-red-500 border border-red-500 rounded hover:bg-red-600">Register</a>
               @endif
             @endauth
           </div>
