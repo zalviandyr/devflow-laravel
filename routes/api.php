@@ -24,3 +24,8 @@ Route::post('/post', 'PostController@create');
 // comment
 Route::get('/comment', 'CommentController@all');
 Route::post('/comment', 'CommentController@create');
+
+// team
+Route::get('/team', 'TeamController@all');
+Route::post('/team', 'TeamController@create');
+Route::post('/team/{team}', 'TeamController@recruit');
