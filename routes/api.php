@@ -45,3 +45,5 @@ Route::post('/project', 'ProjectController@create');
 // category
 Route::get('/category', 'CategoryController@all');
 Route::post('/category', 'CategoryController@create');
+
+Route::get('/bad-word', 'BadWordController');
