@@ -97,6 +97,7 @@
             Register
           </button>
         </form>
+        <div class="mt-5">Sudah punya akun ? <a href="{{ route('login') }}" class="text-red-500">Masuk disini</a></div>
       </div>
     </div>
   </div>
