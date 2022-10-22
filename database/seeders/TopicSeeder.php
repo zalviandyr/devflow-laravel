@@ -14,7 +14,7 @@ class TopicSeeder extends Seeder
         $category1 = Category::create([
             'name' => 'ExpressJS',
             'slug' => '/'.Str::slug('expressjs'),
-            'icon' => '#',
+            'icon' => 'https://caraguna.com/wp-content/uploads/2022/02/expressjs.png',
         ]);
         Topic::create([
             'name' => 'Automation',
@@ -25,7 +25,7 @@ class TopicSeeder extends Seeder
         $category2 = Category::create([
             'name' => 'ReactJS',
             'slug' => '/'.Str::slug('reactjs'),
-            'icon' => '#',
+            'icon' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png',
         ]);
         Topic::create([
             'name' => 'UI/UX',
@@ -36,7 +36,7 @@ class TopicSeeder extends Seeder
         $category3 = Category::create([
             'name' => 'VueJS',
             'slug' => '/'.Str::slug('vuejs'),
-            'icon' => '#',
+            'icon' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vue.png/220px-Vue.png',
         ]);
         Topic::create([
             'name' => 'Workflow',
@@ -47,7 +47,7 @@ class TopicSeeder extends Seeder
         $category4 = Category::create([
             'name' => 'Laravel',
             'slug' => '/'.Str::slug('laravel'),
-            'icon' => '#',
+            'icon' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png',
         ]);
         Topic::create([
             'name' => 'Industrial',
@@ -58,7 +58,7 @@ class TopicSeeder extends Seeder
         $category5 = Category::create([
             'name' => 'Flutter',
             'slug' => '/'.Str::slug('flutter'),
-            'icon' => '#',
+            'icon' => 'https://www.webhozz.com/blog/wp-content/uploads/2021/01/flutter.png',
         ]);
         Topic::create([
             'name' => 'Flutter',
