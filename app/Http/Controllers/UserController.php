@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Auth\LoginRequest;
-use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Requests\User\LoginRequest;
+use App\Http\Requests\User\RegisterRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class AuthController extends Controller
+class UserController extends Controller
 {
     public function login(LoginRequest $request)
     {
@@ -36,6 +36,7 @@ class AuthController extends Controller
         ]);
 
         $user = User::create($request->all());
+        $user->addMediaFromRequest('photo')->toMediaCollection(User::$photoCollection);
 
         return response()->json($user);
     }

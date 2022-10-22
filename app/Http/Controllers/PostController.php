@@ -21,6 +21,10 @@ class PostController extends Controller
         ]);
         $post = Post::create($request->all());
 
+        for ($i = 0; $i < count($request->images); $i++) {
+            $post->addMediaFromRequest("images[$i]")->toMediaCollection(Post::$imageCollection);
+        }
+
         return response()->json($post);
     }
 }

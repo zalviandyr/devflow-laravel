@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -13,6 +13,7 @@ class RegisterRequest extends FormRequest
             'username' => 'required|string|unique:users,username',
             'email' => 'required|string|unique:users,email',
             'password' => 'required|min:8',
+            'photo' => 'required|image',
         ];
     }
 }
