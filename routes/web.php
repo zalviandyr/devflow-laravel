@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,9 +13,6 @@
  */
 
 // Auth
-
-use Illuminate\Support\Facades\Route;
-
 Route::get('/login', 'UserController@loginView')->name('login.view');
 Route::get('/logout', 'UserController@logout')->name('logout');
 Route::post('/login', 'UserController@login')->name('login');
