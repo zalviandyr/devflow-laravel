@@ -32,7 +32,7 @@
           <div class="px-6 py-4 space-x-4 sm:block">
             @auth
               <div class="relative flex items-center h-16 space-x-2 group">
-                <span class="font-medium text-slate-500">Nama User</span>
+                <span class="font-medium text-slate-500">{{ Auth::user()->name }}</span>
                 <img src="{{ asset('images/avatar.svg') }}" class="w-10 h-10">
 
                 <div
