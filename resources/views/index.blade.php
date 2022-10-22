@@ -7,7 +7,7 @@
       <div class="w-full p-4 mb-10 space-y-4 bg-white border border-gray-200 rounded-lg" x-data="{ openComment: false }">
         <div class="flex justify-between">
           <div class="flex">
-            <img src="{{ asset('images/avatar.svg') }}" alt="Profil" class="w-12 h-12 rounded-full">
+            <img src="{{ $post->user->photo }}" alt="Profil" class="w-12 h-12 rounded-full">
             <div class="flex flex-col ml-4">
               <span>{{ $post->user->name }}</span>
               <span class="text-sm">{{ formatDate($post->created_at) }}</span>

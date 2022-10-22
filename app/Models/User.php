@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Traits\MediaTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -11,7 +12,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class User extends Authenticatable implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia;
+    use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia, MediaTrait;
 
     public static $photoCollection = 'photo';
 

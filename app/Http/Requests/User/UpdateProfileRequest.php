@@ -13,6 +13,7 @@ class UpdateProfileRequest extends FormRequest
             'email' => 'email',
             'phone_number' => 'string|starts_with:08|min:12',
             'address' => 'string',
+            'photo' => 'image|max:500',
         ];
     }
 }
