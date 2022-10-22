@@ -17,7 +17,7 @@
 <body class="antialiased">
   <div class="flex h-screen">
     <div class="relative flex items-center w-1/2">
-      <img src="../../images/community.png" class="mx-auto">
+      <img src="{{ asset('images/community.png') }}" class="mx-auto">
       <div class="absolute bottom-0 w-5/6 h-5 bg-red-400 rounded-tr-lg"></div>
       <div class="absolute top-0 right-0 w-3/6 h-5 bg-red-400 rounded-bl-xl"></div>
     </div>
