@@ -72,9 +72,12 @@ class UserController extends Controller
 
     public function updateProfile(UpdateProfileRequest $request)
     {
-        // dd($request->all());
         $user = User::find(Auth::user()->id);
         $user->update($request->all());
+
+        if ($request->has('photo')) {
+            $user->updateMediaFromRequest('photo', User::$photoCollection);
+        }
 
         return redirect()->back()->withSuccess(__('profile.success'));
     }
