@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Reaction\CreateRequest;
 use App\Models\Reaction;
-use App\Models\Topic;
 
 class ReactionController extends Controller
 {
@@ -17,7 +16,15 @@ class ReactionController extends Controller
 
     public function create(CreateRequest $request)
     {
-        $reaction = Topic::create($request->all());
+        $reaction = Reaction::create($request->all());
+        return response()->json($reaction);
+    }
+
+    public function update(CreateRequest $request)
+    {
+        $reaction = Reaction::where('id', $request->id)
+            ->update(['type' => $request->type]);
+
         return response()->json($reaction);
     }
 }
