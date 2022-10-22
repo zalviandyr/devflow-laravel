@@ -19,3 +19,6 @@ Route::post('/login', 'UserController@login')->name('login');
 
 Route::get('/register', 'UserController@registerView')->name('register.view');
 Route::post('/register', 'UserController@register')->name('register');
+Route::get('/', function(){
+  return view('index');
+});

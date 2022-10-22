@@ -1,0 +1,55 @@
+on: push
+name: Deploy to Server with FTP
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    env:
+      CI: false
+    steps:
+      - name: Get latest commit
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Composer install
+        run: |
+          composer install
+
+      - name: Create .env
+        run: |
+          echo -n "${{ secrets.ENV }}" | base64 --decode > .env
+
+      - name: Migrate and Seeding
+        run: |
+          php artisan migrate --seed --force
+
+      - name: NPM install
+        run: |
+          npm i
+
+      - name: Build
+        run: |
+          npm run build
+
+      - name: Upload File
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: "project/"
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.vscode/**
+            **/vendor/**
+            **/node_modules/**
