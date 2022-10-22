@@ -2,6 +2,7 @@
 
 return [
     'login' => [
+        'success' => 'Selamat Datang',
         'failed' => 'Username/Email atau Password Salah',
     ],
     'register' => [
