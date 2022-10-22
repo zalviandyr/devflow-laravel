@@ -9,6 +9,12 @@
     | DevFlow</title>
   <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="//unpkg.com/alpinejs" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet"
+    type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_style.min.css" rel="stylesheet"
+    type="text/css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js">
+  </script>
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   @livewireStyles
   <style>
@@ -55,18 +61,17 @@
       </div>
     </div>
   </div>
-  <div class="container flex mx-auto mt-16">
+  <div class="container flex mx-auto mt-16" x-data="{ createPost: false }">
     <div class="relative w-1/6 px-4 border-r border-r-gray-200">
       <div class="sticky w-full top-20">
         @auth
           <img src="{{ asset('images/avatar.svg') }}" class="w-32 h-32 mx-auto rounded-full">
           <div class="mt-4 text-center">Alvin Faiz</div>
-          <div class="my-10 text-center">
-            <a href="/topic">
-              <div class="w-full py-4 text-white bg-red-500 rounded-full">
-                Create Post
-              </div>
-            </a>
+          <div class="my-10 text-center hover:cursor-pointer" @click="createPost = !createPost">
+            <div class="w-full py-4 rounded-full"
+              :class="createPost ? 'border border-red-500 text-red-500' : 'bg-red-500 text-white'">
+              Create Post
+            </div>
           </div>
         @endauth
         <div class="block">
@@ -116,6 +121,20 @@
       </div>
     </div>
     <div class="w-4/6 px-20">
+      <div class="my-10" x-show="createPost">
+        <div class="mb-6 text-slate-500">
+          <input type="text" name="title" id="title" class="w-full py-2.5 px-2 rounded-md"
+            placeholder="Judul Post" />
+          <input type="text" name="topic_id" id="title" class="w-full py-2.5 px-2 rounded-md"
+            placeholder="Judul Post" />
+        </div>
+        <div id="wysiwyg"></div>
+        <form class="hidden" action="POST" method="{{ route('post') }}">
+          <textarea class="hidden px-4 fr-view" id="show" name="body">
+        </textarea>
+        </form>
+
+      </div>
       @yield('content')
     </div>
     <div class="w-1/6 px-4">
@@ -125,6 +144,22 @@
     </div>
   </div>
   @livewireScripts
+  <script>
+    var callback = function() {
+      var editor = this
+      // console.log(editor.codeBeautifier.run(editor.html.get()))
+      document.getElementById('show').innerHTML = editor.codeBeautifier.run(editor.html.get());
+      // document.getElementById().removeClass('prettyprinted');
+    }
+    var editor = new FroalaEditor('#wysiwyg', {
+      events: {
+        initialized: callback,
+        contentChanged: callback
+      }
+    });
+
+    // document.getElementById('#show').innerHTML = 
+  </script>
 </body>
 
 </html>

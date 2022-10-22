@@ -1,8 +1,7 @@
 @extends('layout')
 @section('title', 'Home')
 @section('content')
-  <div class="flex">
-  </div>
+
   @for ($i = 0; $i < 10; $i++)
     <div class="w-full p-4 mb-10 space-y-4 bg-white border border-gray-200 rounded-lg" x-data="{ openComment: false }">
       <div class="flex justify-between">

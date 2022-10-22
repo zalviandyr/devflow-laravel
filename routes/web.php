@@ -26,3 +26,8 @@ Route::middleware(['guest'])->group(function () {
 Route::get('/', function () {
     return view('index');
 })->name('home');
+
+Route::get('/post/create', function () {
+    return view('Post.create');
+})->name('createPost');
+Route::post('/post', 'PostController@create')->name('post');
