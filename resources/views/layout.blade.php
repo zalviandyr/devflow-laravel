@@ -46,10 +46,24 @@
       <div class="sticky w-full top-20">
         <img src="{{ asset('images/avatar.svg') }}" class="w-32 h-32 mx-auto rounded-full">
         <div class="mt-4 text-center">Alvin Faiz</div>
-        <div class="block mt-10">
+        <div class="my-10 text-center">
+          <a href="/topic">
+            <div class="w-full py-4 text-white bg-red-500 rounded-full">
+              Create Post
+            </div>
+          </a>
+        </div>
+        <div class="block">
           <div class="text-center">
             <a href="/topic">
               <div class="w-full py-4 bg-red-50">
+                Home
+              </div>
+            </a>
+          </div>
+          <div class="text-center">
+            <a href="/topic">
+              <div class="w-full py-4 hover:bg-red-50">
                 Profil
               </div>
             </a>
@@ -85,7 +99,7 @@
         </div>
       </div>
     </div>
-    <div class="w-4/6 px-4">
+    <div class="w-4/6 px-20">
       @yield('content')
     </div>
     <div class="w-1/6 px-4">
