@@ -13,7 +13,7 @@ class CreateRequest extends FormRequest
             'body' => 'required|string',
             'topic_id' => 'required|exists:topic,id',
             'user_id' => 'required|exists:users,id',
-            'images' => 'required|array',
+            'images' => 'required|array|max:4',
             'images.*' => 'image',
         ];
     }
