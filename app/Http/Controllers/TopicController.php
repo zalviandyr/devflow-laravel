@@ -16,11 +16,7 @@ class TopicController extends Controller
 
     public function create(CreateRequest $request)
     {
-        $request->merge([
-            'is_open' => true,
-        ]);
         $topic = Topic::create($request->all());
-
         return response()->json($topic);
     }
 }
