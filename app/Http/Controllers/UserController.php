@@ -37,7 +37,7 @@ class UserController extends Controller
         }
 
         return redirect()->back()
-            ->withErrors('Username/Email atau Password Salah')
+            ->withErrors(__('auth.login.failed'))
             ->withInput();
     }
 
@@ -45,7 +45,7 @@ class UserController extends Controller
     {
         Auth::logout();
 
-        return redirect()->route('login')->withSuccess('Bye Byee');
+        return redirect()->route('login')->withSuccess(__('auth.logout.success'));
     }
 
     public function register(RegisterRequest $request)
@@ -58,6 +58,6 @@ class UserController extends Controller
         $path = public_path('images/avatar.svg');
         $user->copyMedia($path)->toMediaCollection(User::$photoCollection);
 
-        return redirect()->route('login')->withSuccess('Berhasil Registrasi');
+        return redirect()->route('login')->withSuccess(__('auth.register.success'));
     }
 }
