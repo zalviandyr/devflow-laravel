@@ -24,7 +24,6 @@ class ReactionController extends Controller
     {
         $reaction = Reaction::where('id', $request->id)
             ->update(['type' => $request->type]);
-
         return response()->json($reaction);
     }
 }

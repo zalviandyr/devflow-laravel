@@ -12,14 +12,13 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-//Login & Register
-Route::get('/login', function(){
-  return view('Auth.login');
-})->name('login');
-Route::get('/register', function(){
-  return view('Auth.register');
-})->name('register');
+// Auth
+Route::get('/login', 'UserController@loginView')->name('login.view');
+Route::get('/logout', 'UserController@logout')->name('logout');
+Route::post('/login', 'UserController@login')->name('login');
 
+Route::get('/register', 'UserController@registerView')->name('register.view');
+Route::post('/register', 'UserController@register')->name('register');
 Route::get('/', function(){
   return view('index');
 });
