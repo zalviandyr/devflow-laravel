@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 //Login & Register
 Route::get('/login', function(){
   return view('Auth.login');
-});
+})->name('login');
 Route::get('/register', function(){
   return view('Auth.register');
-});
+})->name('register');
 
 Route::get('/', function(){
-  return view('welcome');
+  return view('index');
 });
