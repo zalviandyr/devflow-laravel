@@ -121,53 +121,13 @@
       </div>
     </div>
 
-    <div class="w-4/6 px-20">
-      <div class="my-10" x-show="createPost">
-        <form method="POST" action="{{ route('post') }}">
-          @csrf
-          <div class="mb-6 text-slate-500">
-            <input type="text" name="title" id="title"
-              class="w-full py-2.5 px-2 rounded-md placeholder:text-gray-300" placeholder="Judul Post" />
-            @livewire('search-topic')
-          </div>
-          <div id="wysiwyg"></div>
-          <textarea class="hidden px-4 fr-view" id="show" name="body">
-          </textarea>
-          <button type="submit"
-            class="w-full text-white bg-red-500 rounded-full hover:bg-red-600 py-2.5 mt-4">Post</button>
-        </form>
-      </div>
+    <div class="w-5/6 px-20">
       @yield('content')
     </div>
-
-    @if (route('home') === URL::current())
-      <div class="w-1/6 px-4">
-        <div class="sticky w-full top-20">
-          Faiz
-        </div>
-      </div>
-    @endif
-
   </div>
   @livewireScripts
 
-  @include('vendor.sweetalert.alert')
-  <script>
-    var callback = function() {
-      var editor = this
-      // console.log(editor.codeBeautifier.run(editor.html.get()))
-      document.getElementById('show').innerHTML = editor.codeBeautifier.run(editor.html.get());
-      // document.getElementById().removeClass('prettyprinted');
-    }
-    var editor = new FroalaEditor('#wysiwyg', {
-      events: {
-        initialized: callback,
-        contentChanged: callback
-      }
-    });
 
-    // document.getElementById('#show').innerHTML =
-  </script>
 </body>
 
 </html>

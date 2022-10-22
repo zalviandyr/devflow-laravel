@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,13 @@ Route::get('/', function () {
 Route::get('/post/create', function () {
     return view('Post.create');
 })->name('createPost');
+Route::get('/post/{slug}', function ($slug) {
+    $post = Post::where('slug', $slug)->first();
+    return view('Post.index', compact('post'));
+})->name('showPost');
+
+
+
+
+
 Route::post('/post', '\App\Http\Controllers\PostController@create')->name('post');

@@ -23,11 +23,11 @@ class PostController extends Controller
             'slug' => Str::slug($request->title) . Str::random(8)
         ]);
         $post = Post::create($request->all());
-        dd($post);
-        for ($i = 0; $i < count($request->images); $i++) {
-            $post->addMediaFromRequest("images[$i]")->toMediaCollection(Post::$imageCollection);
-        }
+        // dd($post);
+        // for ($i = 0; $i < count($request->images); $i++) {
+        //     $post->addMediaFromRequest("images[$i]")->toMediaCollection(Post::$imageCollection);
+        // }
 
-        return response()->json($post);
+        return redirect(route('showPost', $post->slug));
     }
 }
