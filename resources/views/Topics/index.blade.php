@@ -3,6 +3,10 @@
 
 @section('content')
   <div class="container p-3 mt-5">
+    <div class="block p-10 space-y-6">
+      <h3 class="text-3xl text-slate-500">{{ $topic->name }}</h3>
+      <a href="{{ route('category.detail', $topic->category->slug) }}">{{ $topic->category->name }}</a>
+    </div>
     @foreach ($posts as $post)
       <div class="w-full p-4 mb-10 space-y-4 bg-white border border-gray-200 rounded-lg" x-data="{ openComment: false }">
         <div class="flex justify-between">
