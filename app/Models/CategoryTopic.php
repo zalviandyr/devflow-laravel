@@ -15,4 +15,9 @@ class CategoryTopic extends Model
         'topic_id',
         'category_id'
     ];
+
+    public function categoryTopic()
+    {
+        return $this->hasMany(Topic::class);
+    }
 }
