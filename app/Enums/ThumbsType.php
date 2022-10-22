@@ -4,9 +4,9 @@ namespace App\Enums;
 
 use App\Traits\EnumTrait;
 
-enum UserRole: string {
+enum ThumbsType: string {
     use EnumTrait;
 
-    case ADMIN = 'ADMIN';
-    case USER = 'USER';
+    case UP = 'UP';
+    case DOWN = 'DOWN';
 }
