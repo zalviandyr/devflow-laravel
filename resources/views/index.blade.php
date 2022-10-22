@@ -16,11 +16,14 @@
       </div>
       <div class="block">
         <h4 class="text-xl font-semibold">Ini Judul ya?</h4>
-        <p>{{ fake()->paragraph() }}</p>
-        <p>{{ fake()->paragraph() }}</p>
+        {!! Str::limit(
+            '<p>' . fake()->paragraph() . '</p><p>' . fake()->paragraph() . '</p>',
+            128,
+            ' <a href="/" class="text-blue-500 hover:underline">Baca Selengkapnya ....</a>',
+        ) !!}
         <div class="grid grid-cols-2 group">
           @for ($j = 1; $j <= 3; $j++)
-            <img src="{{ asset('images/community.png') }}" class="w-full odd:last-of-type:col-span-2" />
+            <img src="{{ asset('images/community.png') }}" class="w-full odd:last-of-type:col-span-2 hover:invert" />
           @endfor
         </div>
       </div>
