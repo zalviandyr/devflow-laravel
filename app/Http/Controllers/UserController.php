@@ -72,6 +72,7 @@ class UserController extends Controller
 
     public function updateProfile(UpdateProfileRequest $request)
     {
+        // dd($request->all());
         $user = User::find(Auth::user()->id);
         $user->update($request->all());
 
