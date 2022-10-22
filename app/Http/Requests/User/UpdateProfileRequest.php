@@ -11,8 +11,6 @@ class UpdateProfileRequest extends FormRequest
         return [
             'name' => 'string',
             'email' => 'email',
-            'phone_number' => 'string|starts_with:08|min:12',
-            'address' => 'string',
             'photo' => 'image|max:500',
         ];
     }

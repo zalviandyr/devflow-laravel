@@ -19,8 +19,6 @@ class UserSeeder extends Seeder
             'username' => fake()->userName,
             'email' => fake()->email,
             'password' => fake()->password,
-            'phone_number' => '089696133160',
-            'address' => fake()->address,
         ]);
     }
 }
