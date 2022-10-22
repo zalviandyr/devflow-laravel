@@ -29,3 +29,11 @@ Route::post('/comment', 'CommentController@create');
 Route::get('/team', 'TeamController@all');
 Route::post('/team', 'TeamController@create');
 Route::post('/team/{team}', 'TeamController@recruit');
+
+// topic
+Route::get('/topic', 'TopicController@all');
+Route::post('/topic', 'TopicController@create');
+
+// reaction
+Route::get('/reaction', 'ReactionController@all');
+Route::post('/reaction', 'ReactionController@create');
