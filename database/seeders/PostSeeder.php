@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Post;
-use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class PostSeeder extends Seeder
 {
@@ -16,48 +16,44 @@ class PostSeeder extends Seeder
     public function run()
     {
         Post::create([
-            'title' => 'Hello World!',
+            'title' => 'Hello World! #1',
             'body' => fake()->text(100),
             'topic_id' => 1,
             'is_open' => true,
             'user_id' => 1,
-            'slug'=> Str::random(8)
+            'slug' => Str::slug('Hello World! #1'),
         ]);
         Post::create([
-            'title' => 'Hello World!',
+            'title' => 'Hello World! #2',
             'body' => fake()->text(100),
             'topic_id' => 2,
             'is_open' => true,
             'user_id' => 1,
-            'slug'=> Str::random(8)
-
+            'slug' => Str::slug('Hello World! #2'),
         ]);
         Post::create([
-            'title' => 'Hello World!',
+            'title' => 'Hello World! #3',
             'body' => fake()->text(100),
             'topic_id' => 3,
             'is_open' => true,
             'user_id' => 1,
-            'slug'=> Str::random(8)
-
+            'slug' => Str::slug('Hello World! #3'),
         ]);
         Post::create([
-            'title' => 'Hello World!',
+            'title' => 'Hello World! #4',
             'body' => fake()->text(100),
             'topic_id' => 4,
             'is_open' => true,
             'user_id' => 1,
-            'slug'=> Str::random(8)
-
+            'slug' => Str::slug('Hello World! #4'),
         ]);
         Post::create([
-            'title' => 'Hello World!',
+            'title' => 'Hello World! #5',
             'body' => fake()->text(100),
             'topic_id' => 5,
             'is_open' => true,
             'user_id' => 1,
-            'slug'=> Str::random(8)
-
+            'slug' => Str::slug('Hello World! #5'),
         ]);
     }
 }

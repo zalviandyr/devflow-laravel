@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -19,7 +18,9 @@ class UserSeeder extends Seeder
             'name' => fake()->name,
             'username' => fake()->userName,
             'email' => fake()->email,
-            'password' => fake()->password
+            'password' => fake()->password,
+            'phone_number' => '089696133160',
+            'address' => fake()->address,
         ]);
     }
 }

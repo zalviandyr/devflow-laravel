@@ -143,7 +143,14 @@
     @if (route('home') === URL::current())
       <div class="w-1/6 px-4">
         <div class="sticky w-full top-20">
-          Faiz
+          <div class="text-xl">Kategori</div>
+            <div class="text-start">
+                <a href="/#">
+                    <div class="w-full py-4 hover:bg-red-50">
+                        Hello
+                    </div>
+                </a>
+            </div>
         </div>
       </div>
     @endif
