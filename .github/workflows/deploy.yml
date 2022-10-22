@@ -34,7 +34,7 @@ jobs:
 
       - name: Migrate and Seeding
         run: |
-          php artisan migrate --force
+          php artisan migrate --seed --force
 
       - name: NPM install
         run: |
