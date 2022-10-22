@@ -15,7 +15,7 @@ class AuthController extends Controller
 
         if ($request->has('email')) {
             $user = User::where('email', $request->email)->first();
-        } else if ($request->has('username')) {
+        } elseif ($request->has('username')) {
             $user = User::where('username', $request->username)->first();
         }
 

@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', 'AuthController@login');
 Route::post('/register', 'AuthController@register');
 
-//  post
+// post
 Route::get('/post', 'PostController@all');
 Route::post('/post', 'PostController@create');
+
+// comment
+Route::get('/comment', 'CommentController@all');
+Route::post('/comment', 'CommentController@create');
