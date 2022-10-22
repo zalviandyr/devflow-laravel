@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\LoginRequest;
 use App\Http\Requests\User\RegisterRequest;
+use App\Http\Requests\User\UpdateProfileRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -17,8 +18,16 @@ class UserController extends Controller
 
     public function registerView()
     {
-
         return view('Auth.register');
+    }
+
+    public function profileView()
+    {
+        $auth = Auth::user();
+
+        return view('User.profile', [
+            'auth' => $auth,
+        ]);
     }
 
     public function login(LoginRequest $request)
@@ -59,5 +68,13 @@ class UserController extends Controller
         $user->copyMedia($path)->toMediaCollection(User::$photoCollection);
 
         return redirect()->route('login')->withSuccess(__('auth.register.success'));
+    }
+
+    public function updateProfile(UpdateProfileRequest $request)
+    {
+        $user = User::find(Auth::user()->id);
+        $user->update($request->all());
+
+        return redirect()->back()->withSuccess(__('profile.success'));
     }
 }
