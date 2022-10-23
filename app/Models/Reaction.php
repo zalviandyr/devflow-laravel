@@ -16,6 +16,11 @@ class Reaction extends Model
         'post_id',
         'author_id',
         'point',
-        'type'
+        'type',
     ];
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id', 'id');
+    }
 }
