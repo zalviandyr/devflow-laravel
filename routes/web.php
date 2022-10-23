@@ -19,7 +19,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/post/{slug}', 'PostController@show')->name('post.detail');
 Route::get('/topic/{slug}', 'TopicController@show')->name('topic.detail');
 Route::get('/category/{slug}', 'CategoryController@show')->name('category.detail');
-Route::get('/leaderboard', 'HomeController@leader')->name('leaderboard');
+Route::get('/leaderboard', 'LeaderboardController@index')->name('leaderboard');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', 'UserController@loginView')->name('login.view');

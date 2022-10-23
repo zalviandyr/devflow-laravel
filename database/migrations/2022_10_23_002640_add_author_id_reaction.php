@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\ThumbsType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reaction', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('post_id');
+        Schema::table('reaction', function (Blueprint $table) {
+            $table->unsignedBigInteger('author_id');
 
-            $table->integer('point');
-            $table->enum('type', ThumbsType::strings());
-            $table->timestamps();
+            $table->foreign('author_id')->on('users')->references('id');
         });
     }
 
@@ -32,6 +27,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reaction');
+        Schema::table('reaction', function (Blueprint $table) {
+            $table->dropForeign(['author_id']);
+            $table->dropColumn('author_id');
+        });
     }
 };

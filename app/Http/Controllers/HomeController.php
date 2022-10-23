@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\Reaction;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -21,10 +19,5 @@ class HomeController extends Controller
         }
 
         return view('index', compact('posts'));
-    }
-
-    public function leader(){
-        $users = Reaction::groupBy('author_id')->sum('point');
-        dd($users);
     }
 }
