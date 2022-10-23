@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('post', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('body');
+            $table->text('body');
             $table->unsignedBigInteger('topic_id');
             $table->boolean('is_open');
             $table->unsignedBigInteger('user_id');
