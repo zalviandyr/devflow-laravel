@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('team', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('min_point');
-            $table->timestamps();
+        Schema::table('reaction', function (Blueprint $table) {
+            $table->unsignedBigInteger('author_id');
+
+            $table->foreign('author_id')->on('users')->references('id');
         });
     }
 
@@ -28,6 +27,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('team');
+        Schema::table('reaction', function (Blueprint $table) {
+            $table->dropForeign(['author_id']);
+            $table->dropColumn('author_id');
+        });
     }
 };

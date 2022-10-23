@@ -14,7 +14,13 @@ class Reaction extends Model
     protected $fillable = [
         'user_id',
         'post_id',
+        'author_id',
         'point',
-        'type'
+        'type',
     ];
+
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id', 'id');
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Requests\User\LoginRequest;
 use App\Http\Requests\User\RegisterRequest;
 use App\Http\Requests\User\UpdatePasswordRequest;
 use App\Http\Requests\User\UpdateProfileRequest;
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -100,5 +101,28 @@ class UserController extends Controller
         ]);
 
         return redirect()->back()->withSuccess(__('profile.changePassword.success'));
+    }
+
+    public function history()
+    {
+        $auth = Auth::user();
+
+        $comments = Comment::where('user_id', $auth->id)
+            ->select([
+                'post_id',
+                'body',
+            ])
+            ->whereIn('created_at', function ($query) {
+                $query->selectRaw('MAX(created_at)')
+                    ->from('comment')
+                    ->groupBy('post_id');
+            })
+            ->get();
+
+        return view('User.history', compact('comments'));
+    }
+
+    public function team(){
+        return view('')
     }
 }
