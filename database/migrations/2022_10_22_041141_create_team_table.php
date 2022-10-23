@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('team', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('min_point');
             $table->timestamps();
         });
     }

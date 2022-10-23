@@ -121,4 +121,6 @@ class UserController extends Controller
 
         return view('User.history', compact('comments'));
     }
+
+
 }
