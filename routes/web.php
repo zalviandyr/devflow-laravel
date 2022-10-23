@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('profile')->group(function () {
         Route::get('/', 'UserController@profileView')->name('profile');;
         Route::get('/change-password', 'UserController@changePasswordView')->name('profile.changePassword');;
+        Route::get('/history', 'UserController@history')->name('profile.history');
         Route::post('/', 'UserController@updateProfile')->name('profile.update');
         Route::post('/change-password', 'UserController@updatePassword')->name('profile.changePassword.update');
     });

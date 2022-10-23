@@ -2,6 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Post;
+use App\Services\EmailService;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Illuminate\Support\Arr;
 use App\Models\Comment as Komen;
@@ -17,20 +21,24 @@ class Comment extends Component
         $this->mid = $post->id;
     }
 
-    public function resetFilters()
+    public function addComment()
     {
-        $this->reset('comment');
+        $this->loading = false;
 
-    }
+        $auth = Auth::user();
 
-    public function addComment(){
-        // $post_id = $this->post->id;
-        $new = [
-            'user_id' => auth()->user()->id,
+        // send email
+        $post = Post::find($this->mid);
+        Mail::to($post->user->email)->send(new EmailService($post->title, $this->comment, $auth->email, $auth->name));
+
+        Komen::create([
+            'user_id' => $auth->id,
             'post_id' => $this->mid,
             'body' => $this->comment,
-        ];
-        $this->resetFilters();
+        ]);
+        $this->comment = '';
+        $this->loading = true;
+        $this->render();
     }
 
     public function render()
