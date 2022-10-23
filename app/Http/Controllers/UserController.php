@@ -122,7 +122,5 @@ class UserController extends Controller
         return view('User.history', compact('comments'));
     }
 
-    public function team(){
-        return view('')
-    }
+
 }
