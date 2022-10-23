@@ -93,21 +93,21 @@
 
           <div class="text-center">
             <a href="/topic">
-              <div class="w-full py-4 @if (request()->routeIs('category*')) bg-red-50 @else hover:bg-red-50 @endif">
-                Kategori
-              </div>
-            </a>
-          </div>
-          <div class="text-center">
-            <a href="/topic">
-              <div class="w-full py-4 @if (request()->routeIs('topic*')) bg-red-50 @else hover:bg-red-50 @endif"">
+              <div class="w-full py-4 @if (request()->routeIs('topic*')) bg-red-50 @else hover:bg-red-50 @endif">
                 Topik
               </div>
             </a>
           </div>
           <div class="text-center">
+            <a href="/topic">
+              <div class="w-full py-4 @if (request()->routeIs('Lowker*')) bg-red-50 @else hover:bg-red-50 @endif"">
+                Lower
+              </div>
+            </a>
+          </div>
+          <div class="text-center">
             <a href="/project">
-              <div class="w-full py-4 @if (request()->routeIs('projec t*')) bg-red-50 @else hover:bg-red-50 @endif"">
+              <div class="w-full py-4 @if (request()->routeIs('project*')) bg-red-50 @else hover:bg-red-50 @endif"">
                 Project
               </div>
             </a>
