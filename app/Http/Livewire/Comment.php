@@ -2,40 +2,42 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Comment as Komen;
 use Livewire\Component;
+use Illuminate\Support\Arr;
+use App\Models\Comment as Komen;
 
 class Comment extends Component
 {
-
-    protected $rules = [
-        'body' => 'required',
-    ];
- 
     public $comment = '';
     public $mid;
+    public $komen = '';
 
     public function mount($post)
     {
         $this->mid = $post->id;
     }
 
+    public function resetFilters()
+    {
+        $this->reset('comment');
+
+    }
+
     public function addComment(){
         // $post_id = $this->post->id;
-        Komen::create([
+        $new = [
             'user_id' => auth()->user()->id,
             'post_id' => $this->mid,
             'body' => $this->comment,
-        ]);
-        $this->comment ='';
-        $this->render();
+        ];
+        $this->resetFilters();
     }
 
     public function render()
-    {
-        $komen = Komen::where('post_id', $this->mid)->latest()->get();
+    {   
+        $this->komen = Komen::where('post_id', $this->mid)->latest()->get();
         return view('livewire.comment', [
-            'comments' => $komen
+            'comments' => $this->komen
         ]);
     }
 }

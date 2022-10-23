@@ -2,11 +2,6 @@
   <form wire:submit.prevent="addComment">
     <textarea name="body" class="w-full border border-blue-500 rounded-md" wire:model="comment">
   </textarea>
-    @error('body')
-      <span class="text-red-500 text-xs">
-        {{ $message }}
-      </span>
-    @enderror
     <button class="px-3 py-3 text-white bg-red-500 rounded-md hover:bg-red-600">Komentari</button>
   </form>
 </div>

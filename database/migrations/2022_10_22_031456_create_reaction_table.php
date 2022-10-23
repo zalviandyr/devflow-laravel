@@ -18,6 +18,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('author_id');
+
             $table->integer('point');
             $table->enum('type', ThumbsType::strings());
             $table->timestamps();

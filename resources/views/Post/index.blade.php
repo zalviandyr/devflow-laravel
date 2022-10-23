@@ -22,7 +22,8 @@
       </div>
       <hr class="border border-slate-200" />
       <div class="flex justify-between">
-        @livewire('reaction')
+        @livewire('reaction', ['post' => $post])
+
       </div>
       <div class="block">
         @auth

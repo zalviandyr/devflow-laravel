@@ -14,6 +14,7 @@ class Reaction extends Model
     protected $fillable = [
         'user_id',
         'post_id',
+        'author_id',
         'point',
         'type'
     ];
