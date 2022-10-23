@@ -19,7 +19,6 @@ class Reaction extends Component
         $this->postId = $post->id;
         if(auth()->user()){
             $this->up = React::where('user_id', auth()->user()->id)->where('post_id', $this->postId)->where('type', 'UP')->first();
-            // dd($this->up);
             $this->down = React::where('user_id', auth()->user()->id)->where('post_id', $this->postId)->where('type', 'DOWN')->first();
             if($this->up){
                 $this->isUp = true;
@@ -60,7 +59,6 @@ class Reaction extends Component
                 $this->down->delete();
                 $this->isDown = false;
             }else{
-                
                 if($this->isUp){
                     $this->up->delete();
                 }
@@ -81,6 +79,8 @@ class Reaction extends Component
 
     public function render()
     {
-        return view('livewire.reaction');
+        $countUp = React::where('post_id', $this->postId)->where('type', 'UP')->count();
+        $countDown = React::where('post_id', $this->postId)->where('type', 'DOWN')->count();
+        return view('livewire.reaction', compact('countUp', 'countDown'));
     }
 }
