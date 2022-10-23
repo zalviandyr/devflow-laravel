@@ -38,7 +38,7 @@ class Comment extends Component
         ]);
         $this->comment = '';
         $this->loading = true;
-        $this->render();
+        return redirect(request()->header('Referer'));
     }
 
     public function render()

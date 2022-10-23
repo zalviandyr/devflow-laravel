@@ -36,6 +36,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/history', 'UserController@history')->name('profile.history');
         Route::post('/', 'UserController@updateProfile')->name('profile.update');
         Route::post('/change-password', 'UserController@updatePassword')->name('profile.changePassword.update');
+        Route::get('/team', 'UserController@team')->name('teamShow');
+        Route::post('/team', 'UserController@teamCreate')->name('teamcreate');
     });
 
     Route::post('/post', 'PostController@create')->name('post');
